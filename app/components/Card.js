@@ -9,17 +9,20 @@ import {
 import Text from "./Text";
 import colors from "../config/colors";
 
-function Card({ title, subTitle, image, onPress }) {
+function Card({ title, subTitle, text, image, onPress }) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
-        <Image style={styles.image} source={image} />
+        {/* <Image style={styles.image} source={image} /> */}
         <View style={styles.detailsContainer}>
-          <Text style={styles.title} numberOfLines={1}>
+          <Text style={styles.title} numberOfLines={2}>
             {title}
           </Text>
           <Text style={styles.subTitle} numberOfLines={2}>
             {subTitle}
+          </Text>
+          <Text style={styles.text} numberOfLines={4}>
+            {text}
           </Text>
         </View>
       </View>
@@ -44,9 +47,19 @@ const styles = StyleSheet.create({
   subTitle: {
     color: colors.secondary,
     fontWeight: "bold",
+    marginBottom: 7,
+    textTransform: "capitalize",
+  },
+  text: {
+    color: colors.black,
+    fontWeight: "normal",
   },
   title: {
     marginBottom: 7,
+    fontWeight: "bold",
+    color: colors.secondary,
+    fontSize: 20,
+    textTransform: "uppercase", 
   },
 });
 
