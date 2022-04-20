@@ -11,9 +11,9 @@ import {
 const initialMessages = [
   {
     id: 1,
-    title: "Mosh Hamedani",
+    title: "Smitha Sathyan",
     description: "Hey! Is this item still available?",
-    image: require("../assets/mosh.jpg"),
+    image: require("../assets/smitha.jpg"),
   },
   {
     id: 2,

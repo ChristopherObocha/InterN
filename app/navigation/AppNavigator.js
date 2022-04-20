@@ -8,6 +8,7 @@ import InfoNavigator from "./InfoNavigator";
 import ListingEditScreen from "../screens/ListingEditScreen";
 import NewListingButton from "./NewListingButton";
 import routes from "./routes";
+import RegisterScreen from "../screens/RegisterScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +25,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name="News"
-      component={ListingEditScreen}
+      component={RegisterScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="email-newsletter" color={color} size={size} />
@@ -33,7 +34,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name="Info"
-      component={InfoNavigator}
+      component={ListingEditScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="bag-checked" color={color} size={size} />

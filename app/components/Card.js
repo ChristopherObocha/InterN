@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     height: 200,
   },
   subTitle: {
-    color: colors.secondary,
+    color: colors.primary,
     fontWeight: "bold",
     marginBottom: 7,
     textTransform: "capitalize",
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 7,
     fontWeight: "bold",
-    color: colors.secondary,
+    color: colors.primary,
     fontSize: 20,
     textTransform: "uppercase", 
   },
