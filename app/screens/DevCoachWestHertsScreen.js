@@ -15,7 +15,7 @@ import SmallBookingButton from '../components/SmallBookingButton';
 
 const deviceWidth = Dimensions.get('window').width;
 
-function DevCoachPAHScreen(props) {
+function DevCoachWestHertsScreen(props) {
   return (
     <ScrollView style={styles.screenview}>
       <ImageBackground 
@@ -23,13 +23,13 @@ function DevCoachPAHScreen(props) {
         resizemode="contain"
         source={require("../assets/header-background.png")}>
         <Screen>
-          <AppText style={styles.header}>Linda Whiteley RN</AppText>
+          <AppText style={styles.header}>Linda Whiteley</AppText>
           <View style={styles.row}>
             <SmallBookingButton />
             <View style={styles.imageContainer}>
               <Image 
                 style={styles.image}
-                source={require("../assets/linda.jpg")} />
+                source={require("../assets/jaimol.jpg")} />
             </View>
           </View>
         </Screen>
@@ -159,4 +159,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default DevCoachPAHScreen;
+export default DevCoachWestHertsScreen;

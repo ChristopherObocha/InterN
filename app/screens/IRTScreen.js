@@ -14,7 +14,7 @@ import AppText from '../components/Text';
 import Icon from '../components/Icon';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function CoachesScreen({navigation}) {
+function IRTScreen({navigation}) {
   return (
   <ScrollView style={styles.screenview}>
     <ImageBackground 
@@ -22,35 +22,17 @@ function CoachesScreen({navigation}) {
       resizemode="contain"
       source={require("../assets/header-background.png")}>
       <Screen>
-        <AppText style={styles.header}>Development Coaches</AppText>
+        <AppText style={styles.header}>International Recruitment</AppText>
       </Screen>
     </ImageBackground>
     <View style={styles.container}>
-      <AppText style={styles.text}>The development coaches are part of the International Recruitment Team offering support to the trusts network for internationally educated nurses who are transitioning to working within Hertfordshire and West Essex.</AppText>
-      <AppText style={styles.text}>Their aim is to work with individual International Recruits to support ongoing career development and wellbeing. They can provide a blend of signposting, coaching and pastoral support with career development skills and competence as you adapt to life in the UK and work in the NHS. They can assist with development opportunities for rotation to other areas of nursing, if required.</AppText>
-      <AppText style={styles.text}>There are three development coaches who are aligned to the main acute trusts across Hertfordshire and West Essex.</AppText>
+      <AppText style={styles.text}>The International Recruitment Team are available to assist you with your journey to employment in the UK and pastoral support when you arrive.  The team cover all the NHS hospitals and organisations across Hertfordshire and West Essex.</AppText>
     </View>  
     <View style={styles.container}>
-      <AppText style={styles.boldText}>Select your hospital trust for more information.</AppText>
-      <Button 
-        title="East and North Herts"
-        color="primary"
-        onPress={() => navigation.navigate("DevCoachPAHScreen")} 
-      />
-      <Button 
-        title="Princess Alexandra Hospital"
-        color="primary"
-        onPress={() => navigation.navigate(routes.REGISTER)} 
-      />
-      <Button 
-        title="West Herts"
-        color="primary"
-        onPress={() => navigation.navigate(routes.REGISTER)} 
-      />
       <TouchableOpacity 
         style={styles.mail}
-        onPress={() => Linking.openURL("mailto:hpft.ics.developmentcoach@nhs.net")}>
-        <AppText style={styles.italicText}>Alternatively send an email to the Development Coach generic inbox: <AppText style={{color: colors.primary}}>hpft.ics.developmentcoach@nhs.net</AppText> </AppText>
+        onPress={() => Linking.openURL("mailto:hweicsirteam@nhs.net")}>
+        <AppText style={styles.italicText}>Alternatively send an email to the Development Coach generic inbox: <AppText style={{color: colors.primary}}>hweicsirteam@nhs.net</AppText> </AppText>
         <MaterialCommunityIcons name="mail" color={colors.gray} size="26" />
       </TouchableOpacity>
     </View>
@@ -119,4 +101,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default CoachesScreen;
+export default IRTScreen;

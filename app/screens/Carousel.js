@@ -5,6 +5,7 @@ import {
   SafeAreaView } from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
+import colors from '../config/colors';
 
 export default class App extends React.Component {
 
@@ -41,9 +42,9 @@ constructor(props){
 _renderItem({item,index}){
 return (
   <View style={{
-    backgroundColor:'floralwhite',
+    backgroundColor: "#fff",
     borderRadius: 5,
-    height: 250,
+    height: 130,
     padding: 50,
     marginLeft: 25,
     marginRight: 25, }}>
@@ -62,8 +63,8 @@ return (
         layout={"default"}
         ref={ref => this.carousel = ref}
         data={this.state.carouselItems}
-        sliderWidth={300}
-        itemWidth={300}
+        sliderWidth={190}
+        itemWidth={190}
         renderItem={this._renderItem}
         onSnapToItem = { index => this.setState({activeIndex:index}) } />
     </View>
@@ -72,4 +73,4 @@ return (
 }
 }
 
-import React from 'react';
+// export default App;

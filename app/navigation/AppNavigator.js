@@ -5,10 +5,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AccountNavigator from "./AccountNavigator";
 import FeedNavigator from "./FeedNavigator";
 import InfoNavigator from "./InfoNavigator";
-import ListingEditScreen from "../screens/ListingEditScreen";
-import NewListingButton from "./NewListingButton";
-import routes from "./routes";
-import RegisterScreen from "../screens/RegisterScreen";
+import NewsScreen from "../screens/NewsScreen";
+import HomeScreen from "../screens/HomeScreen";
+import FAQScreen from "../screens/FAQScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,34 +15,37 @@ const AppNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen
       name="Home"
-      component={FeedNavigator}
+      component={HomeScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="home" color={color} size={size} />
         ),
+        headerShown: false
       }}
     />
     <Tab.Screen
       name="News"
-      component={RegisterScreen}
+      component={NewsScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="email-newsletter" color={color} size={size} />
         ),
+        headerShown: false
       }}
     />
     <Tab.Screen
       name="Info"
-      component={ListingEditScreen}
+      component={InfoNavigator}
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="bag-checked" color={color} size={size} />
         ),
+        headerShown: false
       }}
     />
     <Tab.Screen
       name="FAQs"
-      component={AccountNavigator}
+      component={FAQScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="help" color={color} size={size} />

@@ -10,6 +10,7 @@ import Carousel from 'react-native-snap-carousel';
 import Screen from "./Screen";
 import colors from "../config/colors";
 import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default class CarouselComponent extends React.Component {
 
@@ -20,7 +21,7 @@ constructor(props){
     activeIndex:0,
     carouselItems:[
       {
-        title:"Item 1",
+        title:"Item1",
         text: "Text 1",
       },
       {
@@ -37,7 +38,7 @@ constructor(props){
       },
       {
         title:"Item 5",
-        text: "HWEICS 5",
+        text: "Text 5",
       },
     ]
   }
@@ -47,49 +48,52 @@ _renderItem({item,index}){
 return (
   <View style={{
     backgroundColor: colors.primary,
-    borderRadius: 20,
-    height: 200,
-    padding: 50,
-    marginLeft: 25,
-    marginRight: 25, }}>
-    <Text style={styles.header}>{item.title}</Text>
-    <Text style={styles.paragraph}>{item.text}</Text>
-  </View>
+    borderRadius: 30,
+    height: 130,
+    paddingTop: 15,
+    alignItems: 'center', 
+    marginHorizontal: 10,
+    }}>
+    <LinearGradient 
+      colors={['#4EA3FF', '#007AFE]']}>
+      <Text style={styles.header}>{item.title}</Text>
+      <Text style={styles.paragraph} numberOfLines={2}>{item.text}</Text>
+    </LinearGradient>
 
+  </View>
 )
 }
 
 render() {
 return (
-//   <Screen style={styles.screen}>
     <View style={styles.screen}>
       <Carousel
         layout={"default"}
         ref={ref => this.carousel = ref}
         data={this.state.carouselItems}
-        sliderWidth={300}
-        itemWidth={300}
+        sliderWidth={250}
+        itemWidth={250}
         renderItem={this._renderItem}
         onSnapToItem = { index => this.setState({activeIndex:index}) } />
     </View>
-//   </Screen>
 );
 }
 }
 
 const styles = StyleSheet.create({
     header: {
-      fontSize: 30,
+      fontSize: 21,
+      fontWeight: 'bold',
       color: colors.white,      
     },
     paragraph: {
       color: colors.white,
+      fontSize: 16,
+      // fontWeight: 'bold',
     },
     screen: {
-    backgroundColor: colors.white,
-    // flex: 1, 
+    backgroundColor: colors.light,
     flexDirection:'row', 
-    // justifyContent: 'center',
     marginVertical: 15,
   }
 })

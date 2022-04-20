@@ -40,7 +40,7 @@ const Item = ({ title, date, text }) => (
   />
 );
 
-function HomeScreen ({ navigation }) {
+function NewsScreen ({ navigation }) {
   const renderItem = ({ item }) => (
     <Item 
       title={item.title}
@@ -56,23 +56,14 @@ function HomeScreen ({ navigation }) {
         resizemode="contain"
         source={require("../assets/header-background.png")}>
         <SafeAreaView style={{alignItems: 'center'}}>
-          <Text style={styles.header}>Hertfordshire and West Essex ICS</Text>
-          <Text style={styles.tagline}>This app is for international nurses to provide support, promote training, access to development opportunities and learning materials, sign posting,<Text style={{fontWeight: 'bold'}}>...learn more</Text></Text>
+          <Text style={styles.header}>News and Events</Text>
         </SafeAreaView>
-        <View style={styles.row}>
-          <SmallBookingButton />
-          <TouchableOpacity 
-            onPress={() => navigation.navigate("CoachesScreen")} >
-            <Image 
-                style={styles.image}
-                source={require("../assets/CoachButton.png")} />
-          </TouchableOpacity>
-        </View>
       </ImageBackground>
       <View style={styles.carousel}>
-      <Text style={styles.heading}>Featured</Text>
+      <Text style={styles.heading}>Upcoming Events</Text>
         <CarouselComponent />
       </View>
+      <Text style={styles.heading}>Past Events</Text>
       <View style={styles.cards}>
         <FlatList
             data={DATA}
@@ -89,7 +80,7 @@ const styles = StyleSheet.create({
   background: {    
     overflow: "hidden",
     borderBottomRightRadius: 30,
-    height: 280,
+    height: 120,
   },
   header: {
     fontSize: 30,
@@ -146,4 +137,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default NewsScreen;

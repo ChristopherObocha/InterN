@@ -3,6 +3,7 @@
     "name": "InterN",
     "slug": "InterN",
     "version": "1.0.0",
+    "owner": "intern_hweics",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
     "splash": {
@@ -27,6 +28,7 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }
