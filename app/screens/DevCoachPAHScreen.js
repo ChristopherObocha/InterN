@@ -23,7 +23,7 @@ function DevCoachPAHScreen(props) {
         resizemode="contain"
         source={require("../assets/header-background.png")}>
         <Screen>
-          <AppText style={styles.header}>Linda Whiteley RN</AppText>
+          <AppText style={styles.header}>Priscillah Osikominu</AppText>
           <View style={styles.row}>
             <SmallBookingButton />
             <View style={styles.imageContainer}>
@@ -35,11 +35,12 @@ function DevCoachPAHScreen(props) {
         </Screen>
       </ImageBackground>
       <View style={styles.container}>
-        <AppText style={styles.text}>Linda is the development coach for East and North Hertfordshire NHS Trust.</AppText>
+        <AppText style={styles.text}>Priscillah is the development coach for Princess Alexandra hospital NHS Trust.</AppText>
         <AppText style={styles.heading}>Profile</AppText>
-        <AppText style={styles.text}>I have 38 years of experience in the NHS as a nurse, midwife and specialist practitioner school nursing.  My journey has taken me through a range of roles working in hospitals to community-based school nursing, public health, child and adolescent mental health.  My most recent role has been in nursing informatics and how technology can enhance the delivery of safer patient care.  Following early retirement in 2020, I returned to join the mass vaccination programme for covid 19, where I worked with many amazing people, nurses, administrators and volunteers all working together and dedicated to reach one goal. </AppText>
-        <AppText style={styles.text}>I am passionate about sharing my knowledge and supporting colleagues to develop to be the nurse they want to be and am excited to be working with international nursing recruits.</AppText>
-        <AppText style={styles.text}>Hobbies: gardening, walking, and spending time with family</AppText>
+        <AppText style={styles.text}>Professionally l have worked in the NHS since l was 18 years old.  After training dually, l worked as a midwife, community outreach for vulnerble young adults (not called that anymore!), perinatal meantal health, safeguarding and as a team lead for that team and then training as a SCPHN (HV), worked in Learning disability, practice education. I used to be a union rep for ineqalities and am very passionate about our role professionally in relation to reducing ineqalities in heathcare.  Most of my roles have been around this. </AppText>
+        <AppText style={styles.text}>I am also an advocate for mental health well being among health professionals and the wider community. My MSc in health promotion and public health focused on mental health among a marginalised population and really empowered my practice. Having travelled and lived in a few countries, l consider the UK my home however l empathise with anyone who has left their home.</AppText>
+        <AppText style={styles.text}>Hobbies: Reading, trekking, kayaking, country walks, Travelling and a newfound love for kundalini yoga.  
+        </AppText>
       </View> 
       <View style={styles.container}>
         <TouchableOpacity
@@ -55,7 +56,7 @@ function DevCoachPAHScreen(props) {
           </BigBlueButton>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => Linking.openURL("mailto:linda.whiteley1@nhs.net")}>
+          onPress={() => Linking.openURL("mailto:priscillah.osikominu@nhs.net")}>
           <BigBlueButton>
             <View style={styles.buttonContainer}>
               <View style={styles.buttonText}>
