@@ -40,12 +40,12 @@ function CoachesScreen({navigation}) {
       <Button 
         title="Princess Alexandra Hospital"
         color="primary"
-        onPress={() => navigation.navigate(routes.REGISTER)} 
+        onPress={() => navigation.navigate('DevCoachPAHScreen')} 
       />
       <Button 
         title="West Herts"
         color="primary"
-        onPress={() => navigation.navigate(routes.REGISTER)} 
+        onPress={() => navigation.navigate('DevCoachWestHertsScreen')} 
       />
       <TouchableOpacity 
         style={styles.mail}

@@ -29,7 +29,7 @@ function DevCoachWestHertsScreen(props) {
             <View style={styles.imageContainer}>
               <Image 
                 style={styles.image}
-                source={require("../assets/jaimol.jpg")} />
+                source={require("../assets/jaimol.png")} />
             </View>
           </View>
         </Screen>

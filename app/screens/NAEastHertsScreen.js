@@ -8,7 +8,6 @@ import * as Linking from 'expo-linking';
 
 import colors from "../config/colors";
 import Button from "../components/Button";
-import routes from "../navigation/routes";
 import AppText from '../components/Text';
 
 function NAEastHertsScreen(navigation) {
@@ -26,18 +25,21 @@ function NAEastHertsScreen(navigation) {
   <View style={styles.container}>
     <Image 
       style={styles.image}
-      source={require("../assets/jaimol.png")} />
-    <AppText style={styles.heading}>Jaimol Anilkumar</AppText>
-    <AppText style={styles.text}>Jaimol is the Nursing Ambassador for East and North Hertfordshire NHS Trust.</AppText>
+      source={require("../assets/mary.jpg")} />
+    <AppText style={styles.heading}>Mary Oyakhirome</AppText>
+    <AppText style={styles.text}>Mary is the Nursing Ambassador for East and North Hertfordshire NHS Trust.</AppText>
   </View>
   <View style={styles.container}>
     <AppText style={styles.heading}>Profile</AppText>
-    <AppText style={styles.text}>I am a registered nurse, trained in India, worked in 2 other countries and arrived in UK in 2001, a time when the overseas nurse’s recruitment actively started in the NHS. I am experienced in various clinical specialities, completed mentorship training in University of Hertfordshire and attended leadership courses with various establishments in the UK.</AppText>
-    <AppText style={styles.text}>I faced some challenges during the first year of transition, but my qualities of being easily adaptable and fast learning nature, I was able to handle them well and did not have any lasting impact on my career or life.</AppText>
-    <AppText style={styles.text}>Currently, I am working as a clinical practice nurse in the acute service team, while supporting the senior team with managerial tasks that I learned as I progressed. I am known to have excellent leadership qualities, approachable and someone who goes above and beyond to help others.</AppText>
-    <AppText>I am interested in supporting our international nurses with their transition process into the role and into the community, and I believe this would empower them as they progress in their career.</AppText>
-    <AppText style={styles.text}>I live with my husband and two teenage sons. </AppText>
-    <AppText style={styles.text}>Hobbies: Being outdoors and watching TV</AppText>
+    <AppText style={styles.text}>My experience so far in the trust has been interesting.  I started my nursing journey in 2011 in my 
+    home country, Nigeria and have been opportune to work in different health settings.
+    </AppText>
+    <AppText style={styles.text}>My quest to improve myself and my practice made me pursue my dream of relocating to the UK and 
+    be employed as a staff nurse in Lister Hospital.
+    </AppText>
+    <AppText style={styles.text}>Since I resumed the role, I have learned (and still learning) a lot.  Also, I’m thankful to all who have taught and assisted me to adapt to work and living in Stevenage.
+    </AppText>
+    <AppText>Hobbies: reading, exploring , nature, photography, arts, listening to music,going out and meeting new peolple.</AppText>
   </View>  
   <View style={styles.container}>
     <Button 
@@ -50,7 +52,7 @@ function NAEastHertsScreen(navigation) {
       title="phone"
       color="primary"
 
-      onPress={() => Linking.openURL("tel:07812785184")} 
+      onPress={() => Linking.openURL("tel:07444144815 ")} 
     />
   </View>
 </ScrollView>

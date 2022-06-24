@@ -9,18 +9,18 @@ import {
 import Text from "./Text";
 import colors from "../config/colors";
 
-function Card({ title, subTitle, text, image, onPress }) {
+function Card({ title, date, text, onPress }) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.carD}>
         <View style={styles.detailsContainer}>
-          <Text style={styles.title} numberOfLines={1}>
+          <Text style={styles.title}>
             {title}
           </Text>
-          <Text style={styles.subTitle} numberOfLines={2}>
-            {subTitle}
+          <Text style={styles.subTitle}>
+            {date}
           </Text>
-          <Text style={styles.text} numberOfLines={3}>
+          <Text style={styles.text} numberOfLines={4}>
             {text}
           </Text>
         </View>
@@ -37,28 +37,28 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   carD: {
-    height: 137,
-    width: 343,
     borderStyle: 'solid',
-    borderWidth: 2,
-    borderColor: '#37C6F7',
+    borderBottomWidth: 2,
+    borderColor: colors.gray,
     borderRadius: 30,
     borderBottomLeftRadius: 0,
     backgroundColor: colors.white,
     marginBottom: 20,
+    marginHorizontal: 20,
+
+    // shadowColor: colors.dark,
+    // shadowOffset: {width: -2, height: 4},
+    // shadowOpacity: 0.2,
+    // shadowRadius: 3,
 },
   detailsContainer: {
-    padding: 20,
-  },
-  image: {
-    width: "100%",
-    height: 200,
+    // padding: 20,
+    padding: 10,
   },
   subTitle: {
-    color: colors.darkgray,
+    color: '#515151',
     fontWeight: "bold",
     marginBottom: 7,
-    // textTransform: "lowercase",
   },
   text: {
     color: colors.black,
@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    color: colors.dark,
-    fontSize: 20,
+    color: '#515151',
+    fontSize: 18,
     textTransform: "uppercase", 
   },
 });

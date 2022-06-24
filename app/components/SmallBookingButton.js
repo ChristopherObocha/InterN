@@ -7,9 +7,9 @@ import AppText from '../components/Text';
 import colors from "../config/colors";
 
 
-function SmallBookingButton(props) {
+function SmallBookingButton() {
   return (
-    <SafeAreaView>
+    <View>
       <TouchableOpacity 
         onPress={() => Linking.openURL("https://teams.microsoft.com")}
         style={styles.row}>
@@ -17,7 +17,7 @@ function SmallBookingButton(props) {
           <AppText style={{fontSize: 16, color: colors.white }}>Book a session</AppText>
         </View>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 8,
     alignItems: 'center',
+    // marginRight: -50,
   },
 })
 

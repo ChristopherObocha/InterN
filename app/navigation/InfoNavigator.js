@@ -8,6 +8,7 @@ import NAEastHertsScreen from "../screens/NAEastHertsScreen";
 import InfoScreen from "../screens/InfoScreen";
 import CoachesScreen from "../screens/CoachesScreen";
 import DevCoachPAHScreen from "../screens/DevCoachPAHScreen";
+import DevCoachWestHertsScreen from "../screens/DevCoachWestHertsScreen";
 import IRTScreen from "../screens/IRTScreen";
 
 const Stack = createStackNavigator();
@@ -17,6 +18,7 @@ const InfoNavigator = () => (
     <Stack.Screen name="InfoScreen" component={InfoScreen} options={{headerShown: false}}/>
     <Stack.Screen name="CoachesScreen" component={CoachesScreen} options={{headerShown: false}}/>
     <Stack.Screen name="DevCoachPAHScreen" component={DevCoachPAHScreen} options={{headerShown: false}}/>
+    <Stack.Screen name="DevCoachWestHertsScreen" component={DevCoachWestHertsScreen} options={{headerShown: false}}/>
     <Stack.Screen name="NAScreen" component={NursingAmbassadors} options={{headerShown: false}}/>
     <Stack.Screen name="NAPAH" component={NAPAHScreen} options={{headerShown: false}}/>
     <Stack.Screen name="NAWestNHS" component={NAWestHerts} options={{headerShown: false}}/>

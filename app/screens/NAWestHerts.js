@@ -10,6 +10,7 @@ import colors from "../config/colors";
 import Button from "../components/Button";
 import routes from "../navigation/routes";
 import AppText from '../components/Text';
+import * as Linking from 'expo-linking';
 
 function NAWestHerts(navigation) {
   return (

@@ -1,42 +1,20 @@
-import React from "react";
-import { FlatList, Image, StyleSheet, StatusBar, View, SafeAreaView, Text, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from "react";
+import { FlatList, Image, StyleSheet, StatusBar, View, SafeAreaView, Pressable, Text, TouchableOpacity, ScrollView } from "react-native";
+import { firebase } from '../config/config';
+import * as Linking from 'expo-linking';
 
 import Card from "../components/Card";
 import colors from "../config/colors";
-import routes from "../navigation/routes";
 
 import CarouselComponent from "../components/CarouselComponent";
-import ImageBackground from "react-native/Libraries/Image/ImageBackground";
 import SmallBookingButton from "../components/SmallBookingButton";
 
-const DATA = [
-  {
-    id: 1,
-    title: "Support for staff who may be affected by conflict abroad",
-    date: "16TH MAR, 2022 - 23RD MAR, 2022",
-    image: require("../assets/jacket.jpg"),
-    text: "The session is an opportunity to explore and understand the impact that the Ukraine and Russia conflict might have on us. It is open to staff members who may be wondering how to support themselves or loved ones experiencing fear, worry, anger and uncertainty. Staff who work in healthcare, social care, the voluntary sector or not-for-profit sector are from a range of diverse backgrounds, and we want to offer support in these reflective spaces to ALL staff from these sectors whatever their origins or ethnicity."
-  },
-  {
-    id: 2,
-    title: "Couch in NHS x IGF: Recovery and rehabilitation how can physical activity support us to process our experiences and support wellbeing? condition",
-    date: "30TH MAR, 2022",
-    text: "When we spend most of our working life taking care of others, we often need that reminder to take care of ourselves. Looking after your physical health is key to supporting your overall health and wellbeing, including your mental health. As such, we are pleased to be working with the Invictus Games Foundation (IGF) to offer physical health and wellbeing support to our NHS people. Keynote Speaker: Paul Vice - Teacher of Sports and Active Leisure, Royal Marines Commando"
-  },
-  {
-    id: 3,
-    title: "Pledge your Support for the East of England Anti-Racism Strategy.",
-    date: "2 NOV 2021",
-    text: "As an Integrated Care System - ICS we are encouraging staff to share their pledges."
-  },
-];
-
-const Item = ({ title, date, text }) => (
+const Item = ({ title, date, text, url }) => (
   <Card
     title={title}
-    subTitle={date}
+    date={date}
     text={text}
-    onPress={() => navigation.navigate(routes.LISTING_DETAILS)}
+    onPress={() => Linking.openURL(`${url}`).catch(err => console.error('Error', err))}
   />
 );
 
@@ -45,51 +23,90 @@ function HomeScreen ({ navigation }) {
     <Item 
       title={item.title}
       date={item.date}
-      text={item.text} />
+      text={item.text}
+      url={item.url} />
     );
+
+  const [users, setUsers] = useState([]);
+  const todoRef = firebase.firestore().collection('featured');
+
+  useEffect(async () => {
+    todoRef
+    .onSnapshot( 
+      querySnapshot => {
+      const users = []
+      querySnapshot.forEach((doc) => {
+        const {title, text, date, url} = doc.data()
+        users.push({
+          id: doc.id,
+          title,
+          text,
+          date,
+          url,
+        })
+      })
+      setUsers(users)
+    })
+  }, []);
+
+  const FlatList_Header = () => {
+    return (
+      <View>
+        <View style={{ 
+          alignItems: 'center',
+          borderBottomRightRadius: 40,
+          borderBottomLeftRadius: 40,
+          paddingVertical: '10%',
+          marginBottom: 20,
+          backgroundColor: colors.primary, }}>
+          <Text style={styles.header}>Hertfordshire and West Essex ICS</Text>
+          <View style={{
+            flexDirection: 'row',
+            marginTop: 20,
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <SmallBookingButton />
+            <TouchableOpacity 
+              onPress={() => navigation.navigate("CoachesScreen")} >
+              <Image 
+                  style={styles.image}
+                  source={require("../assets/CoachButton.png")} />
+            </TouchableOpacity>
+        </View>
+        </View>
+        <View>
+          <Text style={styles.heading}>Featured</Text>
+          <CarouselComponent />
+          <Text style={[
+            styles.heading, 
+            {marginBottom: 10
+            }]}>News and Events</Text>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <>
-      <View style={styles.screen}>
-      <ImageBackground 
-        style = {styles.background}
-        resizemode="contain"
-        source={require("../assets/header-background.png")}>
-        <SafeAreaView style={{alignItems: 'center'}}>
-          <Text style={styles.header}>Hertfordshire and West Essex ICS</Text>
-          <Text style={styles.tagline}>This app is for international nurses to provide support, promote training, access to development opportunities and learning materials, sign posting,<Text style={{fontWeight: 'bold'}}>...learn more</Text></Text>
-        </SafeAreaView>
-        <View style={styles.row}>
-          <SmallBookingButton />
-          <TouchableOpacity 
-            onPress={() => navigation.navigate("CoachesScreen")} >
-            <Image 
-                style={styles.image}
-                source={require("../assets/CoachButton.png")} />
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-      <View style={styles.carousel}>
-      <Text style={styles.heading}>Featured</Text>
-        <CarouselComponent />
-      </View>
-      <View style={styles.cards}>
+      <View>
         <FlatList
-            data={DATA}
+            data={users}
             keyExtractor={item => item.id}
-            renderItem={ renderItem }          
+            renderItem={ renderItem }
+            ListHeaderComponent={FlatList_Header}
           />
       </View>
-    </View>
   </>
   );
 }
 
 const styles = StyleSheet.create({
   background: {    
-    overflow: "hidden",
-    borderBottomRightRadius: 30,
-    height: 280,
+    borderBottomRightRadius: -30,
+    borderBottomLeftRadius: 40,
+    height: '25%',
+    backgroundColor: colors.primary,
   },
   header: {
     fontSize: 30,
@@ -97,18 +114,14 @@ const styles = StyleSheet.create({
     color: colors.white,
     textAlign: "center",
     fontWeight: "bold",
-    marginTop: StatusBar.currentHeight || 0, 
+    marginTop: StatusBar.currentHeight+10 || 10, 
   },
   carousel: {
-    
+    marginTop: -40,
   },
   cards: {
     padding: 20,
-    backgroundColor: colors.light,
-  },
-  screen: {
-    padding: 20,
-    backgroundColor: colors.light,
+    backgroundColor: colors.white,
   },
   head: {
     fontSize: 24,
@@ -132,17 +145,13 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     marginTop: 20,
   },
   screen: {
-    backgroundColor: colors.light
-  },
-  tagline: {
-    fontSize: 16,
-    color: colors.white,
+    backgroundColor: colors.white,
   },
 });
 

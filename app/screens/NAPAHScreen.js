@@ -28,7 +28,7 @@ function NAPAHScreen(navigation) {
   <View style={styles.container}>
     <Image 
       style={styles.image}
-      source={require("../assets/linda.jpg")} />
+      source={require("../assets/uzo.jpg")} />
     <AppText style={styles.heading}>Uzoma Onouha (Uzo)</AppText>
     <AppText style={styles.text}>Uzo is the Nursing Ambassador for East and North Hertfordshire NHS Trust.</AppText>
   </View>

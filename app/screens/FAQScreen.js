@@ -1,66 +1,133 @@
-import React from 'react';
-import { FlatList, Image, StyleSheet, StatusBar, View, SafeAreaView, Text, TouchableOpacity } from "react-native";
-import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { Animated, StatusBar, StyleSheet, Text, View, FlatList, Pressable, Dimensions } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { firebase } from '../config/config';
 
-import FAQCard from "../components/FAQCard";
-import colors from "../config/colors";
+import Screen from '../components/Screen';
+import colors from '../config/colors';
 
-const DATA = [
-  {
-    id: 1,
-    title: "Do we get a uniform? ",
-    text: "Yes, you will be taken for a fitting for your uniform but you will need to buy your own shoes. (A lot of nurses have bought theirs at Sport Direct)"
-  },
-  {
-    id: 2,
-    title: "What shoes can we wear to work?",
-    text: "They must be black, closed toe and able to wipe clean. (A lot of nurses have bought theirs at Sports Direct)"
-  },
-  {
-    id: 3,
-    title: "What colour uniform do we wear?",
-    text: "When you first start you will wear and once you have passed your OSCE exam you will wear"
-  },
-  {
-    id: 4,
-    title: "When do we get our first salary?",
-    text: "When you arrive we will give you a cash advance of £    . Your first salary will depend on the day that you arrive. We will try to get you set up on time for the closest payment day from when you arrive. Payment day is the 2 th of each month. Speak to the International recruitment team to confirm this. "
-  },
-];
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
-const Item = ({ title, text }) => (
-  <FAQCard
-    title={title}
-    text={text}
-  />
-);
+const Backdrop = () => {
+  
+  return (
+    <Animated.View
+      style={[
+        StyleSheet.absoluteFillObject,
+        {
+          backgroundColor: colors.grey,
+        }
+      ]}
+    />
+  );
+};
 
-function FAQScreen(props) {
-  const renderItem = ({ item }) => (
-    <Item 
-      title={item.title}
-      text={item.text} />
-    );
+const Square = () => {
 
   return (
-    <SafeAreaView style={styles.screen}>
-      <FlatList
-      data={DATA}
-      keyExtractor={item => item.id}
-      renderItem={ renderItem }         
+    <Animated.View
+      style={{
+        width: 400,
+        height: 400,
+        backgroundColor: '#007afe',
+        borderRadius: 86,
+        position: 'absolute',
+        top: -400 * 0.6,
+        left: -400 * 0.3,
+        transform: [
+          {
+            rotate: '45deg',
+          },
+        ],
+      }}
     />
-    </SafeAreaView>
   );
+};
+
+const FAQ = () => {
+
+  const [users, setUsers] = useState([]);
+  const todoRef = firebase.firestore().collection('far');
+
+  useEffect(async () => {
+    todoRef
+    .onSnapshot( 
+      querySnapshot => {
+      const users = []
+      querySnapshot.forEach((doc) => {
+        const {question, answer} = doc.data()
+        users.push({
+          id: doc.id,
+          question,
+          answer,
+        })
+      })
+      setUsers(users)
+    })
+  }, [])
+
+
+  return (
+    <Screen>
+      <StatusBar hidden />
+      <Backdrop/>
+      <Square />
+      <View>
+        <Text style={styles.pageHeading}>FAQs</Text>
+      </View>
+      <FlatList
+        style={{height:'100%', marginTop: 20}}
+        data={users}
+        numColumns={1}
+        renderItem={({item}) => (
+          <Pressable
+            style={styles.container}
+          >
+            <View style={styles.innerContainer}>
+              <Text style={styles.itemHeading}>{item.question}</Text>
+              <Text style={styles.itemText}>{item.answer}</Text>
+            </View> 
+              
+          </Pressable>
+
+        )}
+      />
+    </Screen>
+  )
 }
 
 const styles = StyleSheet.create({
-  list: {
-    backgroundColor: colors.dark,
-  },
-  screen: {
-    marginTop: StatusBar.currentHeight + 10 || 0,
-    alignItems: 'center',
-  },
-})
+  container: {
+    backgroundColor: colors.white,
+    padding: 15,
+    borderRadius: 15,
+    margin:5,
+    marginHorizontal: 20,
 
-export default FAQScreen;
+    shadowColor: colors.dark,
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  innerContainer: {
+      alignItems: 'center',
+      flexDirection: 'column',
+  },
+  itemHeading: {
+      fontWeight: 'bold',
+      fontSize: 24,
+      marginBottom: 5,
+  },
+  itemText: {
+      fontWeight: '300'
+  },
+  pageHeading: {
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginBottom: 5,
+    color: '#fff',
+    alignSelf: 'center',
+},
+});
+
+export default FAQ
